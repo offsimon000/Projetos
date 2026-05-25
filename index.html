@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filadelfia Hair — Terceirização de Cosméticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #080808;
+      --black2: #0f0f0f;
+      --black3: #161616;
+      --teal:   #00d4c2;
+      --teal2:  #00ffe6;
+      --white:  #f5f2ee;
+      --gray:   #888;
+      --border: #222;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem 6vw;
+      transition: background .4s, border-color .4s;
+      border-bottom: 1px solid transparent;
+    }
+
+    header.scrolled {
+      background: rgba(8,8,8,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: conic-gradient(from 190deg, #00d4c2, #00ffe6, #0090cc, #00d4c2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #000;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .04em;
+    }
+
+    .logo-sub {
+      font-size: .62rem;
+      color: var(--teal);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    nav { display: flex; gap: 2.2rem; list-style: none; }
+
+    nav a {
+      font-size: .82rem;
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--white); }
+
+    .header-cta {
+      background: transparent;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .55rem 1.4rem;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+
+    .header-cta:hover { background: var(--teal); color: #000; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 6vw 6rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-bg-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(120px, 22vw, 340px);
+      font-weight: 600;
+      font-style: italic;
+      color: rgba(0,212,194,0.04);
+      white-space: nowrap;
+      letter-spacing: -.02em;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(0,212,194,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-line-top {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--teal));
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .6s .1s forwards;
+    }
+
+    .hero-label {
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .6s .25s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      font-weight: 300;
+      line-height: 1.0;
+      margin-bottom: .6rem;
+      opacity: 0;
+      animation: fadeUp .7s .4s forwards;
+    }
+
+    .hero-title strong {
+      font-weight: 600;
+      display: block;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--teal);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 480px;
+      line-height: 1.75;
+      margin: 1.8rem auto 2.8rem;
+      opacity: 0;
+      animation: fadeUp .7s .55s forwards;
+    }
+
+    .hero-sub strong { color: var(--white); font-weight: 400; }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .7s .7s forwards;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #000;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-primary:hover { background: var(--teal2); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      font-weight: 400;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gray); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      opacity: 0;
+      animation: fadeUp .6s 1s forwards;
+    }
+
+    .scroll-dot {
+      width: 5px; height: 5px;
+      background: var(--teal);
+      border-radius: 50%;
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    .scroll-label {
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      writing-mode: vertical-rl;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--teal);
+      padding: .9rem 0;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 22s linear infinite;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .marquee-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #000;
+      letter-spacing: .06em;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      font-size: .7rem;
+      opacity: .5;
+    }
+
+    /* ── SOBRE ── */
+    #sobre {
+      padding: 9rem 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .sobre-left {}
+
+    .section-tag {
+      font-size: .68rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--teal); }
+    .section-title strong { font-weight: 600; }
+
+    .section-body {
+      font-size: .95rem;
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .sobre-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat { }
+
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-size: .72rem;
+      color: var(--gray);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .3rem;
+    }
+
+    .sobre-right {
+      position: relative;
+    }
+
+    .sobre-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--black2);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: .8rem;
+      color: #333;
+      font-size: .8rem;
+      letter-spacing: .06em;
+    }
+
+    .sobre-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 30%, rgba(0,212,194,0.07), transparent 70%);
+    }
+
+    .sobre-img span { font-size: 2.5rem; opacity: .25; }
+
+    .sobre-badge {
+      position: absolute;
+      bottom: -1rem;
+      left: -1rem;
+      background: var(--teal);
+      color: #000;
+      padding: 1.4rem 1.8rem;
+    }
+
+    .badge-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .badge-lbl {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    /* ── STRIP ── */
+    .info-strip {
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .info-strip-item {
+      padding: 2.5rem 3rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .info-strip-item:last-child { border-right: none; }
+
+    .info-strip-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+
+    .info-strip-lbl {
+      font-size: .72rem;
+      color: var(--gray);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ── SERVIÇOS ── */
+    #servicos {
+      padding: 9rem 6vw;
+      background: var(--black2);
+    }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 5rem;
+    }
+
+    .sec-head-right {
+      font-size: .95rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .serv-card {
+      padding: 2.8rem 2.2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .serv-card:nth-child(3n) { border-right: none; }
+    .serv-card:nth-child(4),
+    .serv-card:nth-child(5),
+    .serv-card:nth-child(6) { border-bottom: none; }
+
+    .serv-card:hover { background: var(--black3); }
+
+    .serv-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transition: transform .3s;
+      transform-origin: left;
+    }
+
+    .serv-card:hover::before { transform: scaleX(1); }
+
+    .serv-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(0,212,194,0.07);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color .3s;
+    }
+
+    .serv-card:hover .serv-num { color: rgba(0,212,194,0.15); }
+
+    .serv-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .7rem;
+    }
+
+    .serv-desc {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── EXPERIÊNCIA / PROCESSO ── */
+    #processo {
+      padding: 9rem 6vw;
+    }
+
+    .proc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+      margin-top: 5rem;
+    }
+
+    .proc-list { list-style: none; }
+
+    .proc-item {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proc-item:first-child {
+      padding-top: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .proc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--teal);
+      flex-shrink: 0;
+      width: 32px;
+      padding-top: .15rem;
+    }
+
+    .proc-body {}
+
+    .proc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+
+    .proc-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .proc-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .proc-card {
+      background: var(--black2);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--teal), transparent);
+    }
+
+    .proc-card-label {
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: .7rem;
+    }
+
+    .proc-card-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .proc-card-text em { font-style: italic; color: var(--teal); }
+
+    /* ── INFO CARDS ── */
+    #info {
+      padding: 9rem 6vw;
+      background: var(--black2);
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .info-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+
+    .info-card:hover { border-color: rgba(0,212,194,0.25); }
+
+    .info-card-icon {
+      font-size: 1.8rem;
+    }
+
+    .info-card-label {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    .info-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .info-card-text {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ── QUOTE ── */
+    #quote {
+      padding: 9rem 6vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #quote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,212,194,0.05), transparent 70%);
+      pointer-events: none;
+    }
+
+    .quote-open {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7rem;
+      font-weight: 600;
+      color: var(--teal);
+      opacity: .2;
+      line-height: .7;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .quote-author {
+      font-size: .72rem;
+      color: var(--gray);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .quote-author strong { color: var(--teal); font-weight: 500; }
+
+    /* ── CONTATO ── */
+    #contato {
+      padding: 9rem 6vw;
+      background: var(--black2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+
+    .contato-left {}
+
+    .contato-details {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-row:first-child { border-top: 1px solid var(--border); }
+
+    .detail-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 24px;
+      text-align: center;
+      padding-top: .1rem;
+    }
+
+    .detail-label {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: .3rem;
+    }
+
+    .detail-val {
+      font-size: .95rem;
+      color: var(--white);
+    }
+
+    .form-wrap {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      padding: 2.8rem;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fg {
+      margin-bottom: 1.3rem;
+    }
+
+    .fg label {
+      display: block;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: .5rem;
+    }
+
+    .fg input,
+    .fg textarea,
+    .fg select {
+      width: 100%;
+      background: var(--black2);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: .8rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 400;
+      outline: none;
+      transition: border-color .2s;
+      appearance: none;
+    }
+
+    .fg input::placeholder,
+    .fg textarea::placeholder { color: #444; }
+
+    .fg input:focus,
+    .fg textarea:focus,
+    .fg select:focus { border-color: var(--teal); }
+
+    .fg textarea { resize: none; height: 100px; }
+
+    .fg select option { background: var(--black2); }
+
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-btn {
+      width: 100%;
+      background: var(--teal);
+      color: #000;
+      border: none;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: background .2s;
+    }
+
+    .form-btn:hover { background: var(--teal2); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 6vw;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      text-decoration: none;
+    }
+
+    .footer-logo .logo-name { font-size: .95rem; }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: .78rem;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--teal); }
+
+    .footer-copy {
+      font-size: .72rem;
+      color: #444;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      header nav { display: none; }
+
+      #sobre, #processo, #contato {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .sec-head { grid-template-columns: 1fr; gap: 1.5rem; }
+      .servicos-grid { grid-template-columns: 1fr 1fr; }
+      .serv-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .serv-card:nth-child(2n) { border-right: none; }
+
+      .info-strip { grid-template-columns: repeat(2, 1fr); }
+      .info-strip-item:nth-child(2) { border-right: none; }
+      .info-strip-item:nth-child(3) { border-right: 1px solid var(--border); }
+      .info-strip-item:nth-child(3),
+      .info-strip-item:nth-child(4) { border-top: 1px solid var(--border); }
+
+      .info-cards { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; text-align: center; align-items: center; }
+    }
+
+    @media (max-width: 600px) {
+      .servicos-grid { grid-template-columns: 1fr; }
+      .serv-card { border-right: none !important; }
+      .fg-row { grid-template-columns: 1fr; }
+      .sobre-stats { flex-wrap: wrap; gap: 2rem; }
+      .info-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="hdr">
+    <a href="#" class="logo">
+      <div class="logo-mark">F</div>
+      <div class="logo-text">
+        <span class="logo-name">Filadelfia Hair</span>
+        <span class="logo-sub">Cosméticos</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="#contato" class="header-cta">Fale conosco</a>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <span class="hero-bg-word">Filadelfia</span>
+    </div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-line-top"></div>
+    <p class="hero-label">Terceirização de Cosméticos Premium</p>
+
+    <h1 class="hero-title">
+      Transformamos
+      <em>ideias</em>
+      <strong>em beleza.</strong>
+    </h1>
+
+    <p class="hero-sub">
+      Especialistas em <strong>private label</strong> e desenvolvimento de cosméticos para marcas que querem crescer com qualidade e identidade própria.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#servicos" class="btn-primary">Nossos serviços</a>
+      <a href="#sobre" class="btn-outline">Quem somos</a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-dot"></div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-item">Private Label</span>
+      <span class="marquee-item">Fórmulas Exclusivas</span>
+      <span class="marquee-item">Embalagens Personalizadas</span>
+      <span class="marquee-item">Cruelty Free</span>
+      <span class="marquee-item">Qualidade Premium</span>
+      <span class="marquee-item">Entrega Nacional</span>
+      <span class="marquee-item">Sustentabilidade</span>
+      <span class="marquee-item">Sua Marca Aqui</span>
+      <span class="marquee-item">Private Label</span>
+      <span class="marquee-item">Fórmulas Exclusivas</span>
+      <span class="marquee-item">Embalagens Personalizadas</span>
+      <span class="marquee-item">Cruelty Free</span>
+      <span class="marquee-item">Qualidade Premium</span>
+      <span class="marquee-item">Entrega Nacional</span>
+      <span class="marquee-item">Sustentabilidade</span>
+      <span class="marquee-item">Sua Marca Aqui</span>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="sobre-left" data-reveal>
+      <span class="section-tag">Quem Somos</span>
+      <h2 class="section-title">
+        A ponte entre<br />sua <em>visão</em><br />e o <strong>mercado</strong>
+      </h2>
+      <p class="section-body">
+        A Filadelfia Hair nasceu para democratizar o acesso à terceirização de cosméticos de alto padrão. Não fabricamos apenas produtos — construímos marcas. Cada projeto é tratado com a mesma atenção que o dono da marca dedicaria ao próprio negócio.
+      </p>
+      <div class="sobre-stats">
+        <div class="stat">
+          <div class="stat-val">+5</div>
+          <div class="stat-lbl">Anos de mercado</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10K</div>
+          <div class="stat-lbl">Seguidores</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">273</div>
+          <div class="stat-lbl">Projetos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sobre-right" data-reveal>
+      <div class="sobre-img">
+        <span>📷</span>
+        <span style="font-size:.72rem;letter-spacing:.08em">Foto da equipe / fábrica</span>
+      </div>
+      <div class="sobre-badge">
+        <div class="badge-val">100%</div>
+        <div class="badge-lbl">Cruelty Free</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-strip-item" data-reveal>
+      <div class="info-strip-val">+5</div>
+      <div class="info-strip-lbl">Anos de experiência</div>
+    </div>
+    <div class="info-strip-item" data-reveal>
+      <div class="info-strip-val">10K+</div>
+      <div class="info-strip-lbl">Seguidores ativos</div>
+    </div>
+    <div class="info-strip-item" data-reveal>
+      <div class="info-strip-val">273</div>
+      <div class="info-strip-lbl">Projetos publicados</div>
+    </div>
+    <div class="info-strip-item" data-reveal>
+      <div class="info-strip-val">BR</div>
+      <div class="info-strip-lbl">Atendimento nacional</div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="sec-head">
+      <div data-reveal>
+        <span class="section-tag">O que fazemos</span>
+        <h2 class="section-title" style="margin-bottom:0">Do conceito ao<br /><em>produto final</em></h2>
+      </div>
+      <p class="sec-head-right" data-reveal>Uma solução completa para lançar ou expandir sua linha de cosméticos com segurança, qualidade e identidade própria.</p>
+    </div>
+
+    <div class="servicos-grid">
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">01</div>
+        <div class="serv-title">Desenvolvimento de Fórmulas</div>
+        <p class="serv-desc">Fórmulas exclusivas criadas com base no perfil da sua marca e no público que você quer atingir.</p>
+      </div>
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">02</div>
+        <div class="serv-title">Private Label</div>
+        <p class="serv-desc">Sua identidade em produtos premium. Terceirizamos com qualidade e rastreabilidade total.</p>
+      </div>
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">03</div>
+        <div class="serv-title">Embalagens Personalizadas</div>
+        <p class="serv-desc">Design e produção das embalagens para que seus produtos sejam únicos e reconhecíveis.</p>
+      </div>
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">04</div>
+        <div class="serv-title">Controle de Qualidade</div>
+        <p class="serv-desc">Validação rigorosa em cada lote — eficácia, segurança e consistência garantidas.</p>
+      </div>
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">05</div>
+        <div class="serv-title">Consultoria Estratégica</div>
+        <p class="serv-desc">Orientamos as melhores escolhas para posicionar seu cosmético no mercado com inteligência.</p>
+      </div>
+      <div class="serv-card" data-reveal>
+        <div class="serv-num">06</div>
+        <div class="serv-title">Logística Nacional</div>
+        <p class="serv-desc">Da produção ao seu estoque — agilidade e segurança em todo o Brasil.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section id="processo">
+    <span class="section-tag" data-reveal>Como funciona</span>
+    <h2 class="section-title" data-reveal>Simples, <em>transparente</em><br />e sem surpresas</h2>
+
+    <div class="proc-layout">
+      <ul class="proc-list">
+        <li class="proc-item" data-reveal>
+          <span class="proc-num">01</span>
+          <div class="proc-body">
+            <div class="proc-title">Briefing inicial</div>
+            <p class="proc-desc">Entendemos sua marca, público e objetivos antes de qualquer coisa.</p>
+          </div>
+        </li>
+        <li class="proc-item" data-reveal>
+          <span class="proc-num">02</span>
+          <div class="proc-body">
+            <div class="proc-title">Desenvolvimento</div>
+            <p class="proc-desc">Criamos fórmula e embalagem exclusivas para a sua identidade.</p>
+          </div>
+        </li>
+        <li class="proc-item" data-reveal>
+          <span class="proc-num">03</span>
+          <div class="proc-body">
+            <div class="proc-title">Aprovação de amostras</div>
+            <p class="proc-desc">Você aprova tudo antes da produção em escala. Sem surpresas.</p>
+          </div>
+        </li>
+        <li class="proc-item" data-reveal>
+          <span class="proc-num">04</span>
+          <div class="proc-body">
+            <div class="proc-title">Produção e entrega</div>
+            <p class="proc-desc">Produzimos com qualidade e entregamos onde você precisar.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="proc-right">
+        <div class="proc-card" data-reveal>
+          <div class="proc-card-label">Nossa promessa</div>
+          <div class="proc-card-text">Não somos apenas um fabricante. Somos um <em>parceiro estratégico</em> que cresce junto com a sua marca.</div>
+        </div>
+        <div class="proc-card" data-reveal>
+          <div class="proc-card-label">Sustentabilidade</div>
+          <div class="proc-card-text">Ingredientes éticos, fórmulas responsáveis e <em>cruelty free</em> em 100% dos projetos.</div>
+        </div>
+        <div class="proc-card" data-reveal>
+          <div class="proc-card-label">Escalabilidade</div>
+          <div class="proc-card-text">Do <em>primeiro lote</em> às grandes produções — estrutura que acompanha seu crescimento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO CARDS -->
+  <section id="info">
+    <span class="section-tag" data-reveal>Por que nos escolher</span>
+    <h2 class="section-title" data-reveal>O que nos torna <em>diferentes</em></h2>
+
+    <div class="info-cards">
+      <div class="info-card" data-reveal>
+        <div class="info-card-icon">🤝</div>
+        <div class="info-card-label">Parceria real</div>
+        <div class="info-card-title">Atendimento personalizado do início ao fim</div>
+        <p class="info-card-text">Cada cliente é único. Nenhuma solução genérica — desenvolvemos exatamente o que a sua marca precisa.</p>
+      </div>
+      <div class="info-card" data-reveal>
+        <div class="info-card-icon">🔬</div>
+        <div class="info-card-label">Qualidade</div>
+        <div class="info-card-title">Fórmulas testadas, aprovadas e cruelty free</div>
+        <p class="info-card-text">Processo rigoroso de validação em cada lote. Eficácia, segurança e consistência em todos os produtos.</p>
+      </div>
+      <div class="info-card" data-reveal>
+        <div class="info-card-icon">🚀</div>
+        <div class="info-card-label">Crescimento</div>
+        <div class="info-card-title">Estrutura que escala junto com você</div>
+        <p class="info-card-text">Do primeiro lote às grandes produções. Nossa estrutura acompanha o ritmo do crescimento da sua marca.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section id="quote">
+    <span class="quote-open" data-reveal>"</span>
+    <p class="quote-text" data-reveal>
+      A Filadelfia Hair transformou a forma como pensamos nossa marca. Do primeiro contato até a entrega, cada detalhe foi tratado com atenção e profissionalismo que raramente se vê no mercado.
+    </p>
+    <p class="quote-author" data-reveal>— <strong>Cliente Filadelfia Hair</strong> &nbsp;·&nbsp; Linha de cosméticos premium</p>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contato-left">
+      <span class="section-tag" data-reveal>Fale conosco</span>
+      <h2 class="section-title" data-reveal>Vamos construir<br /><em>algo</em> <strong>juntos?</strong></h2>
+      <p class="section-body" data-reveal>
+        Tem uma ideia de produto ou quer expandir sua linha? Estamos prontos para ouvir e transformar em realidade.
+      </p>
+
+      <div class="contato-details">
+        <div class="detail-row" data-reveal>
+          <span class="detail-icon">📸</span>
+          <div>
+            <div class="detail-label">Instagram</div>
+            <div class="detail-val">@filadelfíahair</div>
+          </div>
+        </div>
+        <div class="detail-row" data-reveal>
+          <span class="detail-icon">💬</span>
+          <div>
+            <div class="detail-label">Atendimento</div>
+            <div class="detail-val">Segunda a Sexta, 9h às 18h</div>
+          </div>
+        </div>
+        <div class="detail-row" data-reveal>
+          <span class="detail-icon">📍</span>
+          <div>
+            <div class="detail-label">Cobertura</div>
+            <div class="detail-val">Todo o Brasil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-wrap" data-reveal>
+      <div class="form-title">Envie uma mensagem</div>
+
+      <div class="fg-row">
+        <div class="fg">
+          <label>Nome</label>
+          <input type="text" placeholder="Seu nome" />
+        </div>
+        <div class="fg">
+          <label>Marca</label>
+          <input type="text" placeholder="Sua marca" />
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>E-mail</label>
+        <input type="email" placeholder="seu@email.com" />
+      </div>
+
+      <div class="fg">
+        <label>O que você procura?</label>
+        <select>
+          <option value="">Selecione...</option>
+          <option>Desenvolvimento de fórmula</option>
+          <option>Private label / Marca própria</option>
+          <option>Embalagem personalizada</option>
+          <option>Consultoria de produto</option>
+          <option>Outro</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>Mensagem</label>
+        <textarea placeholder="Conte sobre seu projeto..."></textarea>
+      </div>
+
+      <button class="form-btn" id="send-btn">Enviar mensagem</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <div class="logo-mark" style="width:32px;height:32px;font-size:.95rem;">F</div>
+      <div class="logo-text">
+        <span class="logo-name">Filadelfia Hair</span>
+      </div>
+    </a>
+    <ul class="footer-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Filadelfia Hair</p>
+  </footer>
+
+  <script>
+    // Header scroll
+    const hdr = document.getElementById('hdr');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Reveal on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+
+    // Form
+    document.getElementById('send-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      this.textContent = 'Mensagem enviada ✓';
+      this.style.background = '#00ffe6';
+      setTimeout(() => {
+        this.textContent = 'Enviar mensagem';
+        this.style.background = '';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
