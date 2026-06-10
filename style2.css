@@ -687,6 +687,7 @@ footer {
   .hero-desc { font-size: 14px; margin-bottom: 32px; max-width: 100%; }
   .hero-btns { flex-direction: column; gap: 10px; }
   .hero-btns .btn { justify-content: center; width: 100%; max-width: 320px; }
+  .hero-bg { background-position: left center; }
   .hero-overlay {
     background: linear-gradient(180deg,
       rgba(6,9,8,.92) 0%,
