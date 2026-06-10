@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apex Truck Diesel — Mecatrônica, SCR, Arla 32, Diagnóstico e Reprogramação</title>
+  <meta name="description" content="Especialistas em Mecatrônica, Sistema SCR, Arla 32, Diagnóstico Embarcado, Reprogramação, Válvulas de Freio e Reparação de Módulo para veículos pesados. Paranavaí – PR."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style2.css"/>
+</head>
+<body>
+
+<!-- LOADER CINEMATOGRÁFICO -->
+<div id="ldr" aria-hidden="true">
+  <div class="ldr-inner">
+    <div class="ldr-wordmark">APEX</div>
+    <div class="ldr-sub">TRUCK DIESEL</div>
+    <div class="ldr-bar"><div class="ldr-fill" id="ldrFill"></div></div>
+    <div class="ldr-loc">Paranavaí · PR · Mecatrônica · SCR · Diagnóstico</div>
+  </div>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/5544997350904?text=Ol%C3%A1%2C%20Apex%20Truck%20Diesel!%20%F0%9F%91%8B%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." class="wa-float" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#sobre" onclick="closeMob()">Sobre</a>
+  <a href="#servicos" onclick="closeMob()">Serviços</a>
+  <a href="#produtos" onclick="closeMob()">Produtos</a>
+  <a href="#garantia" onclick="closeMob()">Garantia</a>
+  <a href="#contato" onclick="closeMob()">Contato</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="logo">
+    <img src="Logo.png" alt="Apex Truck Diesel" class="logo-img">
+    <div class="logo-words">
+      <div class="logo-apex">APEX</div>
+      <div class="logo-truck">TRUCK DIESEL</div>
+      <div class="logo-tagline">AdBlue &amp; SCR Solutions</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="#contato" class="nav-pill">Solicitar Orçamento</a>
+    <button class="nav-menu-btn" onclick="document.getElementById('mobMenu').classList.add('open')">
+      <span>MENU</span><span class="nav-dots">···</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-right-glow" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-scanline" aria-hidden="true"></div>
+  <div class="hero-vline" aria-hidden="true"></div>
+  <div class="hero-geo" aria-hidden="true" style="display:none">
+    <svg viewBox="-20 -20 440 540" width="360" height="450" fill="none"
+         xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <filter id="gA" x="-35%" y="-35%" width="170%" height="170%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="gAB" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="9" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- CONTORNO EXTERNO -->
+      <path d="M200,15 C312,15 364,120 364,224 C364,348 286,460 200,492 C114,460 36,348 36,224 C36,120 88,15 200,15Z"
+            stroke="#4ab519" stroke-width="2.5" fill="none" filter="url(#gA)"/>
+      <!-- Linha interna paralela -->
+      <path d="M200,27 C304,27 352,127 352,224 C352,340 278,448 200,478 C122,448 48,340 48,224 C48,127 96,27 200,27Z"
+            stroke="rgba(74,181,25,.22)" stroke-width="1" fill="none"/>
+
+      <!-- DIVISOR DE TESTA -->
+      <path d="M70,154 Q200,133 330,154"
+            stroke="#4ab519" stroke-width="2" fill="none" filter="url(#gA)"/>
+      <path d="M78,164 Q200,144 322,164"
+            stroke="rgba(74,181,25,.28)" stroke-width="1" fill="none"/>
+
+      <!-- PAINEL SUPERIOR -->
+      <path d="M146,90 L158,79 L242,79 L254,90"
+            stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".55"/>
+      <path d="M128,112 Q200,98 272,112"
+            stroke="rgba(74,181,25,.38)" stroke-width="1" fill="none"/>
+      <circle cx="200" cy="70" r="4" stroke="#4ab519" stroke-width="1.5" fill="none" opacity=".65"/>
+      <line x1="200" y1="74" x2="200" y2="88" stroke="#4ab519" stroke-width="1" opacity=".5"/>
+
+      <!-- TOPO (antena) -->
+      <path d="M172,18 L172,5 L200,0 L228,5 L228,18"
+            stroke="#4ab519" stroke-width="1.5" fill="none" opacity=".6" filter="url(#gA)"/>
+      <circle cx="200" cy="0" r="3.5" fill="#4ab519" opacity=".75" filter="url(#gA)"/>
+
+      <!-- OLHO ESQUERDO -->
+      <g filter="url(#gA)">
+        <g transform="rotate(-22 118 278)">
+          <ellipse cx="118" cy="278" rx="76" ry="48" stroke="#4ab519" stroke-width="2.5" fill="rgba(74,181,25,.04)"/>
+          <ellipse cx="118" cy="278" rx="58" ry="35" stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".6"/>
+          <ellipse cx="118" cy="278" rx="40" ry="24" stroke="#4ab519" stroke-width="2"
+                   fill="rgba(74,181,25,.13)" filter="url(#gAB)"/>
+        </g>
+      </g>
+      <path d="M46,238 Q118,218 190,238"
+            stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".48" filter="url(#gA)"/>
+
+      <!-- OLHO DIREITO -->
+      <g filter="url(#gA)">
+        <g transform="rotate(22 282 278)">
+          <ellipse cx="282" cy="278" rx="76" ry="48" stroke="#4ab519" stroke-width="2.5" fill="rgba(74,181,25,.04)"/>
+          <ellipse cx="282" cy="278" rx="58" ry="35" stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".6"/>
+          <ellipse cx="282" cy="278" rx="40" ry="24" stroke="#4ab519" stroke-width="2"
+                   fill="rgba(74,181,25,.13)" filter="url(#gAB)"/>
+        </g>
+      </g>
+      <path d="M210,238 Q282,218 354,238"
+            stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".48" filter="url(#gA)"/>
+
+      <!-- PONTE NASAL -->
+      <path d="M188,328 L200,346 L212,328"
+            stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".55"/>
+
+      <!-- QUEIXO / BOCA -->
+      <path d="M155,393 Q200,418 245,393"
+            stroke="#4ab519" stroke-width="2" fill="none" filter="url(#gA)" opacity=".78"/>
+      <path d="M168,410 Q200,428 232,410"
+            stroke="#4ab519" stroke-width="1.2" fill="none" opacity=".52"/>
+      <!-- Projeções circuito queixo -->
+      <line x1="182" y1="434" x2="182" y2="450" stroke="#4ab519" stroke-width="1.5" opacity=".5"/>
+      <line x1="191" y1="437" x2="191" y2="455" stroke="#4ab519" stroke-width="1.5" opacity=".55"/>
+      <line x1="200" y1="438" x2="200" y2="456" stroke="#4ab519" stroke-width="1.5" opacity=".6"/>
+      <line x1="209" y1="437" x2="209" y2="455" stroke="#4ab519" stroke-width="1.5" opacity=".55"/>
+      <line x1="218" y1="434" x2="218" y2="450" stroke="#4ab519" stroke-width="1.5" opacity=".5"/>
+
+      <!-- CONECTOR ESQUERDO -->
+      <path d="M50,226 L36,226" stroke="#4ab519" stroke-width="2.2" filter="url(#gA)" opacity=".75"/>
+      <rect x="20" y="217" width="16" height="18" rx="2" stroke="#4ab519" stroke-width="1.8"
+            fill="none" opacity=".7" filter="url(#gA)"/>
+      <path d="M20,226 L8,226 L8,200" stroke="#4ab519" stroke-width="1.2" opacity=".42"/>
+      <circle cx="8" cy="198" r="3" fill="#4ab519" opacity=".6" filter="url(#gA)"/>
+      <path d="M36,238 L22,238 L22,252" stroke="#4ab519" stroke-width="1" opacity=".32"/>
+      <path d="M36,214 L26,214 L26,200 L20,200" stroke="#4ab519" stroke-width="1" opacity=".32"/>
+
+      <!-- CONECTOR DIREITO -->
+      <path d="M350,226 L364,226" stroke="#4ab519" stroke-width="2.2" filter="url(#gA)" opacity=".75"/>
+      <rect x="364" y="217" width="16" height="18" rx="2" stroke="#4ab519" stroke-width="1.8"
+            fill="none" opacity=".7" filter="url(#gA)"/>
+      <path d="M380,226 L392,226 L392,200" stroke="#4ab519" stroke-width="1.2" opacity=".42"/>
+      <circle cx="392" cy="198" r="3" fill="#4ab519" opacity=".6" filter="url(#gA)"/>
+      <path d="M364,238 L378,238 L378,252" stroke="#4ab519" stroke-width="1" opacity=".32"/>
+      <path d="M364,214 L374,214 L374,200 L380,200" stroke="#4ab519" stroke-width="1" opacity=".32"/>
+    </svg>
+  </div>
+
+  <!-- Badge de stats (canto direito) -->
+  <div class="hero-content">
+    <div class="hero-label rv">Paranavaí — PR</div>
+    <h1 class="split">
+      <span class="line-mask"><span class="line-inner">DIAGNÓSTICO,</span></span>
+      <span class="line-mask"><span class="line-inner">REPARO E PEÇAS</span></span>
+      <span class="line-mask"><span class="line-inner"><em>EM UM SÓ LUGAR.</em></span></span>
+    </h1>
+    <p class="hero-desc rv rv3">Mecatrônica, Sistema SCR, Arla 32, Diagnóstico Embarcado, Reprogramação, Válvulas de Freio e Reparação de Módulo — tudo para sua frota continuar rodando.</p>
+    <div class="hero-btns rv rv4">
+      <a href="#contato" class="btn btn-green">Solicitar Orçamento</a>
+      <a href="#produtos" class="btn btn-ghost">Ver Produtos</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="marcas">
+  <div class="track" id="track"></div>
+</div>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-label rv">Por que a Apex existe</div>
+    <h2 class="manifesto-text split">
+      <span class="line-mask"><span class="line-inner">COM A APEX,</span></span>
+      <span class="line-mask"><span class="line-inner">SEU CAMINHÃO</span></span>
+      <span class="line-mask"><span class="line-inner"><em>NÃO FICA NA MÃO.</em></span></span>
+    </h2>
+    <p class="manifesto-sub rv rv2">A Apex nasceu para resolver o que mais trava na frota: Mecatrônica, Sistema SCR, Arla 32, falhas de módulo. Diagnóstico preciso, reparo rápido, suporte técnico real — pra seu caminhão não parar.</p>
+  </div>
+</section>
+
+<!-- ═══ STATEMENT ═══ -->
+<section class="stmt-sec">
+  <div class="stmt-img-wrap rv">
+    <img src="Sobre.png" alt="Frotas Apex Truck Diesel" class="stmt-img">
+  </div>
+  <div class="stmt-text split">
+    <span class="line-mask"><span class="line-inner">SUA FROTA</span></span>
+    <span class="line-mask"><span class="line-inner">MERECE</span></span>
+    <span class="line-mask"><span class="line-inner"><em>APEX.</em></span></span>
+  </div>
+</section>
+
+<!-- ═══ SOBRE ═══ -->
+<section class="sec" id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-img-wrap rv">
+      <img src="Sobre.png" alt="Apex Truck Diesel" class="sobre-img-main">
+    </div>
+    <div>
+      <div class="sec-label rv">Sobre a Apex</div>
+      <h2 class="stitle rv rv2">DIAGNÓSTICO,<br><em>REPARO & PEÇAS</em></h2>
+      <p class="sdesc rv rv3" style="margin-bottom:24px">A Apex Truck Diesel nasce em Paranavaí — PR como especialista em Mecatrônica, Diagnóstico Embarcado, Reprogramação, Sistema SCR, Arla 32, Válvulas de Freio e Reparação de Módulo para veículos pesados.</p>
+      <p class="sdesc rv rv3">Atendemos oficinas e transportadoras que precisam de um parceiro técnico de verdade — cada diagnóstico e reparo com suporte direto pelo WhatsApp.</p>
+      <div class="sobre-feats rv rv4">
+        <div class="sfeat">Mecatrônica</div>
+        <div class="sfeat">Diagnóstico Embarcado</div>
+        <div class="sfeat">Reprogramação</div>
+        <div class="sfeat">Sistema SCR & Arla 32</div>
+        <div class="sfeat">Válvulas de Freio</div>
+        <div class="sfeat">Reparação de Módulo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVIÇOS ═══ -->
+<section class="sec sec-dark" id="servicos">
+  <div class="sec-label sec-label-lt rv">Áreas de Atuação</div>
+  <h2 class="stitle stitle-lt rv rv2">NOSSOS <em>SERVIÇOS</em></h2>
+  <p class="sdesc sdesc-lt rv rv3">Da Mecatrônica ao Sistema SCR — diagnóstico embarcado, reprogramação e reparo de módulo para manter sua frota na estrada.</p>
+
+  <div class="serv-list rv">
+    <div class="serv-item">
+      <span class="serv-num">01</span>
+      <div class="serv-body">
+        <div class="serv-name">Mecatrônica</div>
+        <div class="serv-desc">Reparo e substituição de módulos eletrônicos, ECUs e centrais de controle das principais marcas de linha pesada.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">02</span>
+      <div class="serv-body">
+        <div class="serv-name">Diagnóstico Embarcado</div>
+        <div class="serv-desc">Leitura de falhas, análise de parâmetros e diagnóstico completo com scanner de última geração diretamente no veículo.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">03</span>
+      <div class="serv-body">
+        <div class="serv-name">Reprogramação</div>
+        <div class="serv-desc">Reprogramação de ECU, atualização de firmware e calibração de módulos para restaurar o funcionamento correto do veículo.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">04</span>
+      <div class="serv-body">
+        <div class="serv-name">Sistema SCR</div>
+        <div class="serv-desc">Reparo completo do sistema de redução catalítica seletiva — válvulas solenoides, catalisadores, sensores NOx e módulos de controle Euro V e VI.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">05</span>
+      <div class="serv-body">
+        <div class="serv-name">Arla 32</div>
+        <div class="serv-desc">Bombas dosadoras, sensores de nível, aquecedores e módulos de controle homologados para o sistema de dosagem de Arla 32.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">06</span>
+      <div class="serv-body">
+        <div class="serv-name">Válvulas de Freio</div>
+        <div class="serv-desc">Diagnóstico, reparo e reposição de válvulas pneumáticas e solenoides do sistema de freios para caminhões e carretas.</div>
+      </div>
+    </div>
+    <div class="serv-item">
+      <span class="serv-num">07</span>
+      <div class="serv-body">
+        <div class="serv-name">Reparação de Módulo</div>
+        <div class="serv-desc">Bancada especializada para reparação de módulos eletrônicos — alternativa rápida e econômica à substituição do componente original.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUTOS ═══ -->
+<section class="sec sec-alt" id="produtos">
+  <div class="sec-label rv">Linhas de Produtos</div>
+  <h2 class="stitle rv rv2">CONHEÇA NOSSAS <em>LINHAS</em></h2>
+  <p class="sdesc rv rv3">Peças e componentes homologados para Mecatrônica, Sistema SCR, Arla 32, Diagnóstico, Válvulas de Freio e muito mais — com procedência e garantia de fábrica.</p>
+  <div class="prod-list rv rv2" id="prodGrid"></div>
+</section>
+
+<!-- ═══ ARLA CTA ═══ -->
+<div class="arla-sec">
+  <div>
+    <div class="arla-kicker">Diagnóstico & Reparo</div>
+    <h2 class="arla-title">PARCEIRO TÉCNICO<br>DA SUA FROTA</h2>
+    <p class="arla-desc">Da Mecatrônica à Reprogramação, do Sistema SCR ao Arla 32 — a Apex resolve os problemas mais complexos do motor diesel com diagnóstico embarcado, reparo de módulo e suporte técnico direto. Sua frota volta a rodar rápido.</p>
+    <div class="arla-btns">
+      <a href="#contato" class="btn btn-ghost-wt">Falar com Especialista</a>
+      <a href="#produtos" class="btn" style="background:rgba(255,255,255,.15);color:white">Ver Produtos</a>
+    </div>
+  </div>
+  <div class="arla-graphic">
+    <svg viewBox="0 0 200 200" width="180" height="180" fill="white">
+      <path d="M100 10l90 50v80l-90 50L10 140V60z"/>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ═══ GARANTIA ═══ -->
+<section class="sec sec-alt" id="garantia">
+  <div class="sec-label rv">Nosso Compromisso</div>
+  <h2 class="stitle rv rv2">QUALIDADE &amp; <em>GARANTIA</em></h2>
+  <p class="sdesc rv rv3">Trabalhamos apenas com peças originais e marcas homologadas. Confiança não tem preço.</p>
+  <div class="gar-list">
+    <div class="gar-item rv">
+      <span class="gar-num">01</span>
+      <div><div class="gar-title">Garantia de Fábrica</div><p class="gar-desc">Todas as nossas peças possuem garantia de fábrica conforme especificação do fabricante.</p></div>
+    </div>
+    <div class="gar-item rv rv2">
+      <span class="gar-num">02</span>
+      <div><div class="gar-title">Peças Originais</div><p class="gar-desc">Trabalhamos exclusivamente com peças originais e de marcas homologadas pelas montadoras.</p></div>
+    </div>
+    <div class="gar-item rv rv3">
+      <span class="gar-num">03</span>
+      <div><div class="gar-title">Troca Facilitada</div><p class="gar-desc">Processo simples e rápido em caso de defeito de fabricação. Nossa equipe resolve sem burocracia.</p></div>
+    </div>
+    <div class="gar-item rv">
+      <span class="gar-num">04</span>
+      <div><div class="gar-title">Suporte Técnico</div><p class="gar-desc">Equipe técnica especializada para auxiliar na identificação correta da peça e resolução de dúvidas.</p></div>
+    </div>
+    <div class="gar-item rv rv2">
+      <span class="gar-num">05</span>
+      <div><div class="gar-title">Entrega Rápida</div><p class="gar-desc">Estoque próprio com pronta entrega para todo o Brasil via transportadora. Agilidade do primeiro ao último pedido.</p></div>
+    </div>
+    <div class="gar-item rv rv3">
+      <span class="gar-num">06</span>
+      <div><div class="gar-title">Satisfação Total</div><p class="gar-desc">Nossa missão é superar expectativas. O cliente sempre em primeiro lugar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTATO ═══ -->
+<section id="contato">
+  <div class="cont-grid">
+    <div class="cont-left">
+      <div class="sec-label sec-label-lt rv">Contato</div>
+      <h2 class="stitle stitle-lt rv rv2" style="font-size:32px">FALE COM<br><em>NOSSA EQUIPE</em></h2>
+      <p class="rv rv3" style="color:rgba(255,255,255,.45);font-size:13px;margin-top:8px">Respondemos rapidamente pelo canal que preferir.</p>
+      <div class="cont-info-list">
+        <a href="tel:554439003054" class="cont-info-item rv">
+          <div class="cont-info-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4ab519" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><span>(44) 3900-3054</span><small>Telefone Fixo</small></div>
+        </a>
+        <a href="https://wa.me/5544997350904?text=Ol%C3%A1%2C%20Apex%20Truck%20Diesel!%20%F0%9F%91%8B%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." class="cont-info-item rv rv2" target="_blank">
+          <div class="cont-info-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><span>(44) 99735-0904</span><small>WhatsApp</small></div>
+        </a>
+        <a href="mailto:apexdieselbrasil@gmail.com" class="cont-info-item rv rv3">
+          <div class="cont-info-ico"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg></div>
+          <div><span>apexdieselbrasil@gmail.com</span><small>E-mail</small></div>
+        </a>
+        <a href="https://instagram.com/apexdieselbrasil" class="cont-info-item rv rv4" target="_blank">
+          <div class="cont-info-ico">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="url(#igC)">
+              <defs><linearGradient id="igC" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </div>
+          <div><span>@apexdieselbrasil</span><small>Instagram</small></div>
+        </a>
+        <a href="https://maps.google.com/?q=Apex+Diesel+Brasil,Paranavaí,PR" class="cont-info-item rv" target="_blank">
+          <div class="cont-info-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4ab519" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><span>Paranavaí – PR</span><small>Localização</small></div>
+        </a>
+      </div>
+    </div>
+    <div class="cont-right">
+      <h3 class="cont-form-title">ENVIE UMA MENSAGEM</h3>
+      <p class="cont-form-sub">Preencha o formulário e entraremos em contato pelo WhatsApp.</p>
+      <div class="fg"><label>Nome <span style="color:#c00">*</span></label><input type="text" id="fn" placeholder="Seu nome completo" required></div>
+      <div class="form-row">
+        <div class="fg"><label>Telefone <span style="color:#c00">*</span></label><input type="tel" id="ft" placeholder="(44) 99999-9999" oninput="fmtTel(this)" maxlength="15" required></div>
+        <div class="fg">
+          <label>Assunto</label>
+          <select id="fa">
+            <option>Solicitar Orçamento</option>
+            <option>Mecatrônica</option>
+            <option>Diagnóstico Embarcado</option>
+            <option>Reprogramação</option>
+            <option>Sistema SCR</option>
+            <option>Arla 32</option>
+            <option>Válvulas de Freio</option>
+            <option>Reparação de Módulo</option>
+            <option>Parceria Comercial</option>
+            <option>Outros</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Mensagem <span style="color:#c00">*</span></label><textarea id="fm" placeholder="Descreva o que você precisa..." required></textarea></div>
+      <button class="btn btn-wa" style="width:100%;justify-content:center;font-size:13px" onclick="sendForm(event)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar pelo WhatsApp
+      </button>
+      <p class="form-note" style="text-align:center">Você será redirecionado para o WhatsApp da Apex</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<div class="map-sec">
+  <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1835.3962283481533!2d-52.4278474!3d-23.0680693!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949295db57596b5d%3A0x3fa149059c90f3b6!2sApex%20Diesel%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1778694356393!5m2!1spt-BR!2sbr">
+  </iframe>
+</div>
+
+<!-- FOOT MARQUEE -->
+<div class="foot-marquee">
+  <div class="foot-marquee-track" id="footMarquee"></div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">
+        <img src="Logo.png" alt="Apex Truck Diesel" class="foot-logo-img">
+        <div class="logo-words">
+          <div class="logo-apex">APEX</div>
+          <div class="logo-truck">TRUCK DIESEL</div>
+          <div class="logo-tagline">AdBlue &amp; SCR Solutions</div>
+        </div>
+      </div>
+      <p class="foot-desc">Mecatrônica, Diagnóstico Embarcado, Reprogramação, Sistema SCR, Arla 32, Válvulas de Freio e Reparação de Módulo — suporte técnico real para sua frota em Paranavaí e em todo o Brasil.</p>
+      <div class="foot-socials">
+        <a href="https://instagram.com/apexdieselbrasil" class="foot-soc" target="_blank">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="url(#igF)">
+            <defs><linearGradient id="igF" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/5544997350904?text=Ol%C3%A1%2C%20Apex%20Truck%20Diesel!%20%F0%9F%91%8B%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." class="foot-soc" target="_blank">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Navegação</h4>
+      <ul class="foot-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#garantia">Garantia</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Contato</h4>
+      <ul class="foot-links foot-links-ico">
+        <li><a href="tel:554439003054"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(44) 3900-3054</a></li>
+        <li><a href="https://wa.me/5544997350904?text=Ol%C3%A1%2C%20Apex%20Truck%20Diesel!%20%F0%9F%91%8B%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a></li>
+        <li><a href="mailto:apexdieselbrasil@gmail.com"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>apexdieselbrasil@gmail.com</a></li>
+        <li><a href="https://maps.google.com/?q=Apex+Diesel+Brasil,Paranavaí,PR" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Paranavaí – PR</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 <em>Apex Truck Diesel</em> — Todos os direitos reservados.</p>
+    <p>Paranavaí – PR · Brasil</p>
+  </div>
+</footer>
+
+<script>
+const MARCAS = ['SCANIA','VOLVO','MERCEDES-BENZ','IVECO','VOLKSWAGEN','FORD','MAN','DAF','BOSCH','WABCO'];
+const SVG = (p) => `<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#4ab519" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const PRODUTOS = [
+  { icon: SVG('<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>'), name:'MECATRÔNICA', items:'Módulos Eletrônicos · ECUs · Centrais de Controle · Painéis', desc:'Módulos eletrônicos e componentes mecatrônicos de alta precisão para as principais marcas de linha pesada.', lista:['Módulos de cabine e painel (PTM/PSM)','ECU motor e câmbio','Centrais de fusíveis e relés','Câmeras e sensores de imagem','Módulos de controle de emissão'] },
+  { icon: SVG('<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'), name:'INJEÇÃO DIESEL', items:'Injetores · Bombas Alta Pressão · Bicos · Common Rail', desc:'Sistema completo de injeção diesel para motores modernos de alta eficiência.', lista:['Injetores diesel de alta pressão','Bombas de alta pressão','Bicos injetores originais','Sensores de injeção','Rail e tubulações de alta pressão'] },
+  { icon: SVG('<path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>'), name:'ARLA 32', items:'Bombas Dosadoras · Sensores de Nível · Módulo SCR · Tanques', desc:'Linha completa de componentes para o sistema de redução catalítica seletiva (SCR).', lista:['Bombas dosadoras Bosch','Sensores de nível de Arla 32','Módulo de controle SCR','Aquecedores de tanque','Válvulas solenoides SCR'] },
+  { icon: SVG('<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>'), name:'SISTEMA SCR', items:'Válvulas NOx · Catalisadores · Sensores · Aquecedores', desc:'Componentes para o sistema SCR que garante o cumprimento das normas de emissão Euro V e VI.', lista:['Sensores NOx Continental','Catalisadores SCR','Válvulas de dosagem','Módulos de controle de emissão','Filtros de partículas (DPF)'] },
+  { icon: SVG('<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>'), name:'SUSPENSÃO', items:'Amortecedores · Bolsas de Ar · Kit Bolsa · Kit Mola', desc:'Linha completa de componentes de suspensão para caminhões de todas as marcas.', lista:['Amortecedores dianteiros e traseiros','Bolsas de ar para cabine','Kit bolsa amortecedor','Molas de suspensão','Batentes e coxins'] },
+  { icon: SVG('<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>'), name:'VÁLVULAS', items:'Solenoides · Pneumáticas · Reguladoras de Pressão · Freio', desc:'Válvulas para sistemas pneumáticos, freios e injeção com total confiabilidade.', lista:['Válvulas solenoides 12V/24V','Válvulas pneumáticas','Reguladoras de pressão','Válvulas de freio','Válvulas de controle SCR'] },
+  { icon: SVG('<circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/>'), name:'SENSORES', items:'Sensor Óleo · Injeção · ABS · Temperatura · Pedal · NOx', desc:'Sensores eletrônicos de precisão para todos os sistemas de monitoramento do veículo.', lista:['Sensor de pressão de óleo','Sensor de injeção diesel','Sensor ABS de roda','Sensor de temperatura','Sensor NOx e lambda'] },
+  { icon: SVG('<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'), name:'FILTROS', items:'Secador APU · Filtros de Ar · Óleo · Combustível', desc:'Filtros de alta eficiência para manter o motor limpo e protegido por muito mais tempo.', lista:['Secador de ar (APU)','Filtros de ar primário e secundário','Filtros de óleo motor','Filtros de combustível diesel','Filtros separadores d\'água'] },
+  { icon: SVG('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>'), name:'MECÂNICA', items:'Esticadores Correia · Bomba D\'água · Bomba Combustível · Tensores', desc:'Peças mecânicas de alta precisão para manter o motor funcionando perfeitamente.', lista:['Esticadores de correia dentada','Bombas d\'água originais','Bombas de combustível','Tensores e polias','Kits de correia completos'] },
+  { icon: SVG('<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><circle cx="12" cy="12" r="1" fill="#4ab519"/>'), name:'DIAGNÓSTICO EMBARCADO', items:'Scanner · Leitura de Falhas · Parâmetros · Análise de Dados', desc:'Diagnóstico completo com equipamentos de última geração para leitura de falhas e análise de parâmetros do veículo.', lista:['Leitura e apagamento de DTCs','Análise de parâmetros em tempo real','Teste de atuadores e sensores','Diagnóstico SCR e Arla 32','Relatório técnico completo'] },
+  { icon: SVG('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/><circle cx="17" cy="15" r="2" fill="#4ab519"/>'), name:'REPARAÇÃO DE MÓDULO', items:'Bancada Especializada · ECU · Módulo SCR · Painel · ABS', desc:'Bancada especializada em reparação de módulos eletrônicos — alternativa econômica e rápida à troca do componente.', lista:['Reparação de ECU de motor','Módulos de controle SCR','Centrais de ABS e freio','Painéis e instrumentos','Módulos de cabine e suspensão'] },
+];
+const DEPS = [
+  {text:'"Serviço impecável! Pedimos peças para nossa frota de 40 caminhões Scania e a entrega foi pontual. Qualidade fora de série!"', name:'Carlos Mendes', role:'Gestor de Frota — TransBrasil', av:'CM'},
+  {text:'"A equipe da Apex me ajudou a identificar a peça correta em minutos. Atendimento técnico de altíssimo nível!"', name:'Roberto Silva', role:'Mecânico — Oficina Silva & Cia', av:'RS'},
+  {text:'"Estoque sempre disponível, preço justo e atendimento rápido pelo WhatsApp. A melhor distribuidora de peças diesel que já trabalhei."', name:'Ana Carvalho', role:'Compradora — LogiMax SP', av:'AC'},
+  {text:'"Trabalhamos com a Apex há 5 anos. Arla 32 de qualidade e suporte técnico que realmente entende do negócio. Parabéns!"', name:'Marcos Oliveira', role:'Gerente — Auto Peças Omega', av:'MO'},
+  {text:'"Rápidos, confiáveis e com ótimo preço. Peças originais para nossa frota Mercedes sem complicação. Recomendo sem hesitar!"', name:'Fernanda Lima', role:'Diretora — Transportes Lima', av:'FL'},
+  {text:'"Catálogo eletrônico incrível — encontro qualquer referência em segundos. Profissionalismo e tecnologia de verdade!"', name:'Paulo Rodrigues', role:'Mecânico Chefe — FleetCare', av:'PR'},
+];
+
+// ── TICKER ───────────────────────────────────
+const track = document.getElementById('track');
+[...MARCAS,...MARCAS].forEach(m => { const d=document.createElement('div'); d.className='marca'; d.textContent=m; track.appendChild(d); });
+
+// ── PRODUTOS (accordion) ──────────────────────
+const grid = document.getElementById('prodGrid');
+PRODUTOS.forEach((p,i) => {
+  grid.innerHTML += `<div class="prod-item" id="prod-${i}">
+    <button class="prod-head" onclick="toggleProd(${i})">
+      <span class="prod-num">${String(i+1).padStart(2,'0')}</span>
+      <span class="prod-name">${p.name}</span>
+      <span class="prod-toggle">+</span>
+    </button>
+    <div class="prod-body">
+      <div class="prod-body-inner">
+        <div class="prod-body-content">
+          <p class="prod-desc">${p.desc}</p>
+          <ul class="prod-spec-list">${p.lista.map(l => `<li>${l}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </div>
+  </div>`;
+});
+function toggleProd(i) {
+  const item = document.getElementById('prod-'+i);
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.prod-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── DEPOIMENTOS (removidos — empresa em inauguração) ──
+
+// ── FOOTER MARQUEE ────────────────────────────
+(function(){
+  const fm = document.getElementById('footMarquee');
+  if (!fm) return;
+  const words = ['MECATRÔNICA','DIAGNÓSTICO EMBARCADO','REPROGRAMAÇÃO','SISTEMA SCR','ARLA 32','VÁLVULAS DE FREIO','REPARAÇÃO DE MÓDULO','SUPORTE TÉCNICO','LINHA PESADA','PARANAVAÍ · PR'];
+  [...words,...words,...words].forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'fmi';
+    s.innerHTML = t + '<span class="fmi-dot">✦</span>';
+    fm.appendChild(s);
+  });
+})();
+
+// ── NAV SCROLL ────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── MOBILE MENU ───────────────────────────────
+function closeMob() { document.getElementById('mobMenu').classList.remove('open'); }
+
+// ── REVEAL (scroll) ───────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv, .split').forEach(el => obs.observe(el));
+
+// ═══════════════════════════════════════════════
+// EFEITOS PREMIUM
+// ═══════════════════════════════════════════════
+
+// ── LOADER ───────────────────────────────────
+(function(){
+  document.body.classList.add('no-scroll');
+  const fill = document.getElementById('ldrFill');
+  const ldr  = document.getElementById('ldr');
+  if (!fill || !ldr) return;
+  requestAnimationFrame(() => { fill.style.width = '100%'; });
+  setTimeout(() => {
+    ldr.classList.add('done');
+    document.body.classList.remove('no-scroll');
+    setTimeout(() => ldr.remove(), 800);
+  }, 1200);
+})();
+
+// ── PARALLAX (scroll + mouse na hero) ─────────
+(function(){
+  const heroBg   = document.querySelector('.hero-bg');
+  const heroSec  = document.querySelector('.hero');
+  const sobreImg = document.querySelector('.sobre-img-main');
+
+  let pMouseX = 0, pMouseY = 0, pCurX = 0, pCurY = 0;
+
+  heroSec?.addEventListener('mousemove', e => {
+    const r = heroSec.getBoundingClientRect();
+    pMouseX = ((e.clientX - r.left) / r.width  - .5) * 2;
+    pMouseY = ((e.clientY - r.top)  / r.height - .5) * 2;
+  });
+  heroSec?.addEventListener('mouseleave', () => { pMouseX = 0; pMouseY = 0; });
+
+  (function raf() {
+    const sc = window.scrollY;
+    pCurX += (pMouseX - pCurX) * .05;
+    pCurY += (pMouseY - pCurY) * .05;
+    if (heroBg && heroSec) {
+      const p = Math.min(sc / heroSec.offsetHeight, 1);
+      heroBg.style.transform = `translateX(${pCurX * -10}px) translateY(${pCurY * -8 + p * 70}px) scale(1.12)`;
+    }
+    if (sobreImg) {
+      const r = sobreImg.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.bottom > 0 && r.top < vh) {
+        const progress = (vh - r.top) / (vh + r.height) - .5;
+        sobreImg.style.transform = `translateY(${progress * 50}px)`;
+      }
+    }
+    requestAnimationFrame(raf);
+  })();
+})();
+
+// ── BOTÕES MAGNÉTICOS ─────────────────────────
+document.querySelectorAll('.btn, .nav-pill').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width  / 2) * .22;
+    const y = (e.clientY - r.top  - r.height / 2) * .3;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+
+// ── TOAST ─────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── MÁSCARA DE TELEFONE ───────────────────────
+function fmtTel(input) {
+  let v = input.value.replace(/\D/g,'').slice(0,11);
+  if(v.length===0){input.value='';return;}
+  if(v.length<=2) input.value='('+v;
+  else if(v.length<=6) input.value='('+v.slice(0,2)+') '+v.slice(2);
+  else if(v.length<=10) input.value='('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
+  else input.value='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+}
+
+// ── FORMULÁRIO → WHATSAPP ─────────────────────
+function sendForm(event) {
+  const nome    = document.getElementById('fn').value.trim();
+  const tel     = document.getElementById('ft').value.trim();
+  const assunto = document.getElementById('fa').value.trim();
+  const msg     = document.getElementById('fm').value.trim();
+  if(!nome){ showToast('⚠️ Preencha seu nome.'); return; }
+  if(!tel) { showToast('⚠️ Preencha seu telefone.'); return; }
+  if(!msg) { showToast('⚠️ Escreva sua mensagem.'); return; }
+  const texto = 'Olá, Apex Truck Diesel! 👋\n\n*Nome:* '+nome+'\n*Telefone:* '+tel+'\n*Assunto:* '+assunto+'\n\n*Mensagem:*\n'+msg;
+  window.open('https://wa.me/5544997350904?text='+encodeURIComponent(texto),'_blank');
+}
+</script>
+</body>
+</html>
